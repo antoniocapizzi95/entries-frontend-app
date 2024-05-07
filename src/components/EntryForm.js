@@ -54,9 +54,9 @@ function EntryForm({ initialData }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <TextField label="Application Hostname" value={entry.application_hostname || ''} onChange={handleChange('application_hostname')} fullWidth margin="normal" />
+      <TextField label="Application Hostname" value={entry.application_hostname || ''} onChange={handleChange('application_hostname')} required fullWidth margin="normal" />
 
-      <FormControl fullWidth>
+      <FormControl fullWidth required>
         <InputLabel>Type</InputLabel>
         <Select
           value={entry.type || ''}
@@ -68,7 +68,7 @@ function EntryForm({ initialData }) {
         </Select>
       </FormControl>
 
-      <TextField label="User" value={entry.user || ''} onChange={handleChange('user')} fullWidth margin="normal" />
+      <TextField label="User" value={entry.user || ''} onChange={handleChange('user')} fullWidth required margin="normal" />
       <TextField label="IP" value={entry.ip || ''} onChange={handleChange('ip')} fullWidth margin="normal" />
       <TextField label="Device" value={entry.device || ''} onChange={handleChange('device')} fullWidth margin="normal" />
       <FormGroup>

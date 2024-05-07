@@ -1,0 +1,14 @@
+version: '3'
+services:
+  entries-frontend-app:
+    container_name: entries-frontend-app
+    build: .
+    ports:
+      - "3001:3001"
+    networks:
+      - backend-app_entries-app-network
+
+networks:
+  backend-app_entries-app-network:
+    name: "backend-app_entries-app-network"
+    external: true

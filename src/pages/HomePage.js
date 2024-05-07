@@ -9,6 +9,11 @@ function HomePage() {
   const [total, setTotal] = useState(0);
   const limit = 10;
 
+  const onDelete = (deletedEntryId) => {
+    const updatedEntries = entries.filter(entry => entry.id !== deletedEntryId);
+    setEntries(updatedEntries);
+  };
+
   useEffect(() => {
     const loadEntries = async () => {
       try {
@@ -19,13 +24,14 @@ function HomePage() {
         console.error('Error loading entries:', error);
       }
     };
+
     loadEntries();
   }, [page]);
 
   return (
     <div>
       <h1>Entries</h1>
-      <EntriesTable entries={entries} />
+      <EntriesTable entries={entries} onDelete={onDelete} />
       <Button onClick={() => setPage(page - 1)} disabled={page === 1}>Prev</Button>
       <Button onClick={() => setPage(page + 1)} disabled={entries.length === total}>Next</Button>
     </div>
