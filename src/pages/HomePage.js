@@ -7,7 +7,7 @@ function HomePage() {
   const [entries, setEntries] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
-  const limit = 10;
+  const limit = 20; // by default 20 entries per page
 
   const onDelete = (deletedEntryId) => {
     const updatedEntries = entries.filter(entry => entry.id !== deletedEntryId);
@@ -22,6 +22,7 @@ function HomePage() {
         setTotal(result.total);
       } catch (error) {
         console.error('Error loading entries:', error);
+        alert('No connection with server!');
       }
     };
 
