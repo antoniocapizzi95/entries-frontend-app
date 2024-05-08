@@ -4,10 +4,15 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from 'react-router-dom';
 import { updateEntry, createEntry } from '../services/api';
 
-function EntryForm({ initialData }) {
+function EntryForm({ initialData = {} }) {
   const [entry, setEntry] = useState({
-    ...initialData,
-    tags: initialData?.tags || []
+    application_hostname: initialData.application_hostname || '',
+    type: initialData.type || '',
+    user: initialData.user || '',
+    ip: initialData.ip || '',
+    device: initialData.device || '',
+    isDangerous: initialData.isDangerous || false,
+    tags: initialData.tags || []
   });
   const [newTagTitle, setNewTagTitle] = useState('');
   const [newTagDescription, setNewTagDescription] = useState('');
@@ -17,7 +22,7 @@ function EntryForm({ initialData }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      if (initialData) {
+      if (initialData.id) {
         await updateEntry(initialData.id, entry);
         alert('Entry updated!');
       } else {

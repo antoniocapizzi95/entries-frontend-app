@@ -6,9 +6,9 @@ services:
     ports:
       - "3001:3001"
     networks:
-      - backend-app_entries-app-network
+      - entries-backend-app_entries-app-network
 
 networks:
-  backend-app_entries-app-network:
-    name: "backend-app_entries-app-network"
+  entries-backend-app_entries-app-network:
+    name: "entries-backend-app_entries-app-network"
     external: true
